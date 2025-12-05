@@ -2,15 +2,33 @@
 import React, { useState } from "react";
 
 export default function LoginComponent() {
-  const [username, setUsername] = useState("");
+  const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
-    console.log("--- Form Submitted ---");
-    console.log("Username:", username);
-    console.log("Password:", password);
-  };
+
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify({ login: login, password: password }),
+    });
+
+    console.log({
+      method: "POST",
+      body: JSON.stringify({ login: login, password: password }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      setMessage(data.error);
+      return;
+    }
+
+    setMessage("Login successful!");
+    console.log(message);
+  }
 
   const overlayColor = "rgba(10, 10, 10, 0.75)";
 
@@ -49,10 +67,10 @@ export default function LoginComponent() {
             type="text"
             id="login"
             name="login"
-            placeholder="Enter your username"
+            placeholder="Enter your login"
             required
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={login}
+            onChange={(e) => setLogin(e.target.value)}
             className="
               w-full p-3 bg-[#1f3f4f] border border-[#1a3a4a] rounded-md text-gray-200
               focus:ring-2 focus:ring-[#2f6f6f] focus:border-[#2f6f6f] transition duration-200
@@ -90,7 +108,7 @@ export default function LoginComponent() {
             active:translate-y-0.5
           "
         >
-          Go
+          Sign in
         </button>
       </form>
     </div>
