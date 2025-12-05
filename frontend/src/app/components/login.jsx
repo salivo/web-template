@@ -12,11 +12,14 @@ export default function LoginComponent() {
     console.log("Password:", password);
   };
 
+  const overlayColor = "rgba(10, 10, 10, 0.75)";
+
   return (
     <div
-      className="flex min-h-screen w-screen items-center justify-center font-mono text-red-400"
+      className="flex min-h-screen w-screen items-center justify-center
+                 bg-[#0a0a0a] font-mono text-gray-200"
       style={{
-        backgroundImage: `linear-gradient(rgba(29, 23, 23, 0.6), rgba(29, 23, 23, 0.6)), url('/login.jpg')`,
+        backgroundImage: `linear-gradient(${overlayColor}, ${overlayColor}), url('/background.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -25,20 +28,20 @@ export default function LoginComponent() {
     >
       <form
         className="
-          bg-stone-900/30 p-20 rounded-xl w-full max-w-sm
-          border-4 border-red-700/30 backdrop-blur-sm
-          shadow-[8px_8px_20px_0px_rgba(0,0,0,5)]
+          bg-[#1a2a3a]/40 p-12 rounded-2xl w-full max-w-md
+          border-2 border-[#2f6f6f] backdrop-blur-sm
+          shadow-xl shadow-[#142f3f]/60
         "
         onSubmit={handleSubmit}
       >
-        <h2 className="text-2xl font-bold mb-8 text-center text-red-400">
+        <h2 className="text-3xl font-bold mb-10 text-center text-[#678666]">
           Login
         </h2>
 
         <div className="mb-6">
           <label
             htmlFor="login"
-            className="block text-sm font-medium mb-2 text-red-400"
+            className="block text-sm font-medium mb-2 text-[#678666]"
           >
             Login:
           </label>
@@ -51,8 +54,8 @@ export default function LoginComponent() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             className="
-              w-full p-3 bg-stone-950 border-red-700 rounded-md text-red-400
-              focus:ring-2 focus:ring-black focus:border-black transition duration-200
+              w-full p-3 bg-[#1f3f4f] border border-[#1a3a4a] rounded-md text-gray-200
+              focus:ring-2 focus:ring-[#2f6f6f] focus:border-[#2f6f6f] transition duration-200
             "
           />
         </div>
@@ -60,7 +63,7 @@ export default function LoginComponent() {
         <div className="mb-8">
           <label
             htmlFor="password"
-            className="block text-sm font-medium mb-2 text-red-400"
+            className="block text-sm font-medium mb-2 text-[#678666]"
           >
             Password:
           </label>
@@ -73,8 +76,8 @@ export default function LoginComponent() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="
-              w-full p-3 bg-stone-950 border-red-700 rounded-md text-red-400
-              focus:ring-2 focus:ring-black focus:border-black transition duration-200
+              w-full p-3 bg-[#1f3f4f] border border-[#1a3a4a] rounded-md text-gray-200
+              focus:ring-2 focus:ring-[#2f6f6f] focus:border-[#2f6f6f] transition duration-200
             "
           />
         </div>
@@ -82,12 +85,12 @@ export default function LoginComponent() {
         <button
           type="submit"
           className="
-            w-full py-3 bg-red-600/60 text-black font-semibold rounded-md
-            hover:bg-red-900 transition duration-200 shadow-lg
+            w-full py-3 bg-[#2f6f6f] text-[#0a0a0a] font-semibold rounded-md
+            hover:bg-[#2f6f6f]/80 transition duration-200 shadow-lg shadow-[#1a3a4a]/50
             active:translate-y-0.5
           "
         >
-          go
+          Go
         </button>
       </form>
     </div>
