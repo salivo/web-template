@@ -1,7 +1,8 @@
 "use client";
-
 import { useEffect, useState } from "react";
-
+import HeaderComponent from "./components/header";
+// import Planetspace2 from "./components/planetspace2";
+import Planetspace from "./components/plantspace";
 export default function Home() {
   const [status, setStatus] = useState("loading"); // loading|ok|fail
   const [user, setUser] = useState(null);
@@ -40,9 +41,21 @@ export default function Home() {
   if (status === "fail") return <p>Not logged in</p>;
 
   return (
-    <div>
-      <h1>Welcome</h1>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
+    <div className="flex flex-col h-full">
+      <HeaderComponent>
+        <div className="flex items-center">
+          <button className="login-submit-button w-auto">About Us</button>
+        </div>
+
+        <div className="flex space-x-10">
+          <button className="login-submit-button w-auto">Login</button>
+
+          <button className="login-submit-button w-auto">Register</button>
+        </div>
+      </HeaderComponent>
+
+      <Planetspace />
+      {/* <Planetspace2 />*/}
     </div>
   );
 }
